@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6F1A2B3C-4D5E-4F60-8A9B-0C1D2E3F4A5B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HQ13Demo</RootNamespace>
+    <AssemblyName>HQ13Demo</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <!-- Domain Models (Encapsulation) -->
+    <Compile Include="Models\ContainerInfo.cs" />
+    <Compile Include="Models\CustomsClearanceResult.cs" />
+    <!-- Abstractions & Interfaces (Abstraction, ISP, DIP) -->
+    <Compile Include="Interfaces\ICustomsService.cs" />
+    <Compile Include="Interfaces\INotificationChannel.cs" />
+    <!-- Services & Strategy Pattern (SRP, OCP, LSP) -->
+    <Compile Include="Services\CustomsService.cs" />
+    <Compile Include="Services\Notifications\MessageBoxNotificationChannel.cs" />
+    <!-- UI Forms (Inheritance, Polymorphism, Template Method) -->
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HQ13Base.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HQ13Base.Designer.cs">
+      <DependentUpon>HQ13Base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HQ13.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HQ13.Designer.cs">
+      <DependentUpon>HQ13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HQ13A.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HQ13A.Designer.cs">
+      <DependentUpon>HQ13A.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
